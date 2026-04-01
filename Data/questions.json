@@ -1,0 +1,109 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "subject": "General",
+      "question": "What is the best technique to stay focused during study sessions?",
+      "options": ["A) Multitasking", "B) Pomodoro Technique", "C) Studying for 5 hours straight", "D) Listening to loud music"],
+      "answer": "B"
+    },
+    {
+      "id": 2,
+      "subject": "Math",
+      "question": "What is the value of π (pi) up to 2 decimal places?",
+      "options": ["A) 3.14", "B) 3.41", "C) 3.12", "D) 3.16"],
+      "answer": "A"
+    },
+    {
+      "id": 3,
+      "subject": "Science",
+      "question": "What is the chemical symbol for water?",
+      "options": ["A) O2", "B) CO2", "C) H2O", "D) HO"],
+      "answer": "C"
+    },
+    {
+      "id": 4,
+      "subject": "General",
+      "question": "How long should a Pomodoro study session last?",
+      "options": ["A) 25 minutes", "B) 50 minutes", "C) 90 minutes", "D) 15 minutes"],
+      "answer": "B"
+    },
+    {
+      "id": 5,
+      "subject": "English",
+      "question": "Which of the following is a synonym for 'intelligent'?",
+      "options": ["A) Lazy", "B) Clever", "C) Tired", "D) Sad"],
+      "answer": "B"
+    },
+    {
+      "id": 6,
+      "subject": "History",
+      "question": "In which year did World War II end?",
+      "options": ["A) 1940", "B) 1942", "C) 1945", "D) 1950"],
+      "answer": "C"
+    },
+    {
+      "id": 7,
+      "subject": "Science",
+      "question": "Which planet is known as the Red Planet?",
+      "options": ["A) Venus", "B) Jupiter", "C) Saturn", "D) Mars"],
+      "answer": "D"
+    },
+    {
+      "id": 8,
+      "subject": "Math",
+      "question": "What is 12 × 12?",
+      "options": ["A) 124", "B) 144", "C) 132", "D) 148"],
+      "answer": "B"
+    },
+    {
+      "id": 9,
+      "subject": "General",
+      "question": "What is the main benefit of taking breaks during study?",
+      "options": ["A) Wastes time", "B) Increases fatigue", "C) Improves focus and retention", "D) Decreases productivity"],
+      "answer": "C"
+    },
+    {
+      "id": 10,
+      "subject": "English",
+      "question": "What is the plural of 'child'?",
+      "options": ["A) Childs", "B) Childes", "C) Children", "D) Childrens"],
+      "answer": "C"
+    },
+    {
+      "id": 11,
+      "subject": "Science",
+      "question": "What gas do plants absorb during photosynthesis?",
+      "options": ["A) Oxygen", "B) Nitrogen", "C) Carbon Dioxide", "D) Hydrogen"],
+      "answer": "C"
+    },
+    {
+      "id": 12,
+      "subject": "Math",
+      "question": "What is the square root of 144?",
+      "options": ["A) 10", "B) 11", "C) 12", "D) 13"],
+      "answer": "C"
+    },
+    {
+      "id": 13,
+      "subject": "History",
+      "question": "Who was the first President of the United States?",
+      "options": ["A) Abraham Lincoln", "B) Thomas Jefferson", "C) George Washington", "D) John Adams"],
+      "answer": "C"
+    },
+    {
+      "id": 14,
+      "subject": "General",
+      "question": "How many hours of sleep are recommended for teenagers?",
+      "options": ["A) 4-5 hours", "B) 6-7 hours", "C) 8-10 hours", "D) 12+ hours"],
+      "answer": "C"
+    },
+    {
+      "id": 15,
+      "subject": "Science",
+      "question": "What is the speed of light approximately?",
+      "options": ["A) 300,000 km/s", "B) 150,000 km/s", "C) 450,000 km/s", "D) 100,000 km/s"],
+      "answer": "A"
+    }
+  ]
+}
