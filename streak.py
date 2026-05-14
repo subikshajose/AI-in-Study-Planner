@@ -191,3 +191,51 @@ def calculate_progress_to_milestone(streak):
         "days_to_next_milestone": 10 - current_in_cycle,
         "progress_percentage": progress_pct
     }
+# ─────────────────────────────────────────────
+# COMPATIBILITY FUNCTIONS (for main.py)
+# ─────────────────────────────────────────────
+
+def get_streak_info():
+    progress = get_user_progress()
+    return {
+        "streak": progress["streak"],
+        "points": progress["points"],
+        "last_study_date": progress["last_study_date"],
+        "cheat_days_used": progress.get("cheat_day_used", 0)
+    }
+
+
+def mark_day_completed():
+    result = check_and_update_streak(completed=True)
+    return {
+        "message": " ".join(result["messages"]),
+        "milestone_reached": result["streak"] % 10 == 0
+    }
+
+
+def mark_day_missed(use_cheat_day=False):
+    result = check_and_update_streak(completed=False, use_cheat_day=use_cheat_day)
+    return {
+        "message": " ".join(result["messages"])
+    }
+
+
+def can_use_cheat_day(points):
+    progress = get_user_progress()
+    return points >= 20 and progress["cheat_day_used"] == 0
+
+
+def get_motivational_message(streak):
+    status = get_streak_status()
+    return status["motivation"]
+
+
+def get_streak_badge(streak):
+    if streak < 5:
+        return "🌱 Beginner"
+    elif streak < 10:
+        return "🔥 Consistent"
+    elif streak < 20:
+        return "🏆 Pro"
+    else:
+        return "🌟 Legend"

@@ -9,6 +9,7 @@ from datetime import date
 
 # Name of our database file
 DB_NAME = "study_planner.db"
+DB_PATH = DB_NAME
 
 
 def get_connection():
@@ -150,22 +151,13 @@ def get_schedule():
     """Retrieve all schedule items from the database."""
     conn = get_connection()
     cursor = conn.cursor()
-    cursor.execute("SELECT id, subject, difficulty, days_left, hours_allocated, priority_score, status FROM schedule")
+    cursor.execute("""
+        SELECT id, subject, difficulty, days_left, hours_allocated, priority_score, status
+        FROM schedule
+    """)
     rows = cursor.fetchall()
     conn.close()
-
-    schedule = []
-    for row in rows:
-        schedule.append({
-            "id": row[0],
-            "subject": row[1],
-            "difficulty": row[2],
-            "days_left": row[3],
-            "hours_allocated": row[4],
-            "priority_score": row[5],
-            "status": row[6]
-        })
-    return schedule
+    return rows
 
 
 def update_task_status(task_id, status):
@@ -225,3 +217,24 @@ def get_session_history():
     rows = cursor.fetchall()
     conn.close()
     return [{"date": r[0], "subject": r[1], "status": r[2]} for r in rows]
+# ─────────────────────────────────────────────
+# COMPATIBILITY FUNCTIONS (for main.py)
+# ─────────────────────────────────────────────
+
+def log_study_session(subject, hours, status):
+    """Wrapper for logging study sessions with hours."""
+    log_session(subject, status)
+
+
+def get_study_log():
+    """Return study log in format expected by main.py."""
+    history = get_session_history()
+    return [
+        (item["date"], item["subject"], 0, item["status"])  # hours = 0 (placeholder)
+        for item in history
+    ]
+
+
+def reset_all_data():
+    """Reset all app data."""
+    reset_progress()

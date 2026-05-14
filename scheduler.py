@@ -208,3 +208,20 @@ def schedule_to_dataframe(schedule):
     })
 
     return df
+def get_pomodoro_sessions(hours):
+    """
+    Convert study hours into Pomodoro sessions.
+    1 Pomodoro = 25 minutes study + 5 minutes break
+    """
+    total_minutes = int(hours * 60)
+    num_sessions = max(1, total_minutes // 25)
+
+    study_minutes = num_sessions * 25
+    break_minutes = max(0, (num_sessions - 1) * 5)
+
+    return {
+        "num_sessions": num_sessions,
+        "study_minutes": study_minutes,
+        "break_minutes": break_minutes,
+        "total_minutes": study_minutes + break_minutes
+    }

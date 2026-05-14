@@ -176,3 +176,51 @@ def summarize_schedule(schedule):
         f"- Highest priority subject: {top_priority}"
     )
     return summary
+# ─────────────────────────────────────────────
+# POMODORO PLAN GENERATOR (for main.py)
+# ─────────────────────────────────────────────
+
+def generate_pomodoro_plan(hours):
+    """
+    Generate Pomodoro study plan based on hours.
+
+    1 session = 25 min study + 5 min break
+    Every 4 sessions → long break (15 min)
+    """
+    plan = []
+    total_minutes = int(hours * 60)
+
+    num_sessions = max(1, total_minutes // 25)
+
+    for i in range(num_sessions):
+        # Study session
+        plan.append({
+            "type": "study",
+            "label": f"📖 Study Session {i+1} (25 min)"
+        })
+
+        # Break session
+        if (i + 1) % 4 == 0:
+            plan.append({
+                "type": "break",
+                "label": "☕ Long Break (15 min)"
+            })
+        else:
+            plan.append({
+                "type": "break",
+                "label": "🧘 Short Break (5 min)"
+            })
+
+    return plan
+# ─────────────────────────────────────────────
+# COMPATIBILITY FIX (for main.py)
+# ─────────────────────────────────────────────
+
+def validate_subject_inputs(subjects_data):
+    return validate_subject_input(subjects_data)
+def progress_bar_value(streak):
+    """
+    Return progress value between 0 and 1 for Streamlit progress bar.
+    Milestone cycle = every 10 days.
+    """
+    return (streak % 10) / 10

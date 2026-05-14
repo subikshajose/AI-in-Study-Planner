@@ -177,3 +177,64 @@ def format_question_for_display(question, question_number):
 def get_option_labels():
     """Return list of option letters for radio buttons."""
     return ["A", "B", "C", "D"]
+# ─────────────────────────────────────────────
+# COMPATIBILITY FUNCTIONS (for main.py)
+# ─────────────────────────────────────────────
+
+def get_quiz_questions(subject="General", num_questions=5):
+    """
+    Wrapper to match main.py expectation.
+    Ignores subject for now (can improve later).
+    """
+    questions = get_random_questions(num_questions)
+
+    # Convert format for main.py
+    formatted = []
+    for q in questions:
+        formatted.append({
+            "question": q["question"],
+            "options": q["options"],
+            "answer": q["answer"]
+        })
+
+    return formatted
+
+
+def calculate_score(questions, answers):
+    """
+    Wrapper to match main.py expected format.
+    """
+    score = 0
+    feedback = []
+
+    for i, q in enumerate(questions):
+        user_ans = answers[i]
+        correct_ans = q["answer"]
+
+        if user_ans == correct_ans:
+            score += 1
+            result = "✅ Correct"
+        else:
+            result = f"❌ Wrong. Correct answer: {correct_ans}"
+
+        feedback.append({
+            "question": q["question"],
+            "your_answer": user_ans,
+            "correct_answer": correct_ans,
+            "result": result
+        })
+
+    total = len(questions)
+    percentage = round((score / total) * 100, 1) if total > 0 else 0
+
+    return {
+        "score": score,
+        "total": total,
+        "percentage": percentage,
+        "feedback": feedback
+    }
+
+
+def get_quiz_result_message(score_pct):
+    """Wrapper for feedback message."""
+    return get_score_feedback(score_pct)
